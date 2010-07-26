@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2011, Prakash Mohan and Sivaramakrishnan Swaminathan
+# Copyright (c) 2010, Prakash Mohan and Sivaramakrishnan Swaminathan
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
