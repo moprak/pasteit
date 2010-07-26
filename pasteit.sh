@@ -33,12 +33,12 @@
 
 if [[ ! -f "$1" ]] ; then
     echo "Usage: $0 <path-to-file>"
-    echo "Or,    $0 <path-to-file> <format>"
+    echo "Or,    $0 <path-to-file> <format> <paste-name> <expiry time (N, 10M, 1H, 1D, 1M)>"
     echo "You will get the pastebin.com url as the output!"
     exit
 fi
+
 test=""
-#echo $test
  if [[ ! -z "$2" ]] ; then
     formats=(abap actionscript actionscript3 ada apache \
         applescript apt_sources asm asp autoit avisynth \
@@ -72,5 +72,12 @@ test=""
         exit 1
     fi
  fi
-curl http://pastebin.com/api_public.php -d paste_format="$2" --data-urlencode paste_code@$1 -d paste_name="$1"
+
+expiry="N"
+
+if [[ ! -z $4 ]] ; then
+    expiry=$4
+fi
+
+curl http://pastebin.com/api_public.php -d paste_format="$2" --data-urlencode paste_code@$1 --data-urlencode paste_name="$3" -d paste_expiry="$4"
 echo
