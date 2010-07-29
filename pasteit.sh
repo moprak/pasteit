@@ -130,10 +130,13 @@ if [[ ! -z "$verbose" ]]; then
     echo "Sending the contents to pastebin.com ...";
 fi
 
-if [[ `curl http://pastebin.com/api_public.php -d \
+curl http://pastebin.com/api_public.php -d \
     paste_format=$format --data-urlencode paste_code@$file \
-    --data-urlencode paste_name=$author -d paste_expiry=$expiry` ]]; then
+    --data-urlencode paste_name=$author -d paste_expiry=$expiry; 
+if [[ "$?" == "0" ]] ; then
     if [[ ! -z "$verbose" ]]; then
         echo "There's the link! :-)";
     fi
+else
+    echo "There was an error in sending your post"
 fi
