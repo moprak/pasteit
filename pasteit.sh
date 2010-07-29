@@ -36,9 +36,9 @@
 PROG_NAME=$(basename $0)
 
 if [[ ! -f "$1"  ]] ; then
-    echo "Usage: $PROG_NAME <path-to-file>";
-    echo "Or,    $PROG_NAME <path-to-file> [ -f <format> -a <author> -x <expiry time (N, 10M, 1H, 1D, 1M)> -v ]";
+    echo "Usage:    $PROG_NAME <path-to-file> [ -f <format> -a <author> -x <expiry time (N, 10M, 1H, 1D, 1M)> -v ]";
     echo "You will get the pastebin.com url as the output!";
+    echo "Note:     The file to be pasted is mandatory, other options are optional"
     exit 1 ;
 fi
 
