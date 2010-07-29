@@ -133,6 +133,8 @@ fi
 curl http://pastebin.com/api_public.php -d \
     paste_format=$format --data-urlencode paste_code@$file \
     --data-urlencode paste_name=$author -d paste_expiry=$expiry; 
+echo
+
 if [[ "$?" == "0" ]] ; then
     if [[ ! -z "$verbose" ]]; then
         echo "There's the link! :-)";
