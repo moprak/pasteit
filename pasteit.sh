@@ -36,9 +36,15 @@
 PROG_NAME=$(basename $0)
 
 if [[ ! -f "$1"  ]] ; then
-    echo "Usage:    $PROG_NAME <path-to-file> [ -f <format> -a <author> -x <expiry time (N, 10M, 1H, 1D, 1M)> -v ]";
-    echo "You will get the pastebin.com url as the output!";
-    echo "Note:     The file to be pasted is mandatory, other options are optional"
+    echo "Usage:    $PROG_NAME <path-to-file> [OPTIONS]";
+    echo "The program will return the URL to your post as the output.";
+    echo
+    echo "Options:"
+    echo "          -f FORMAT   Specify the syntax highlighting format to be used"
+    echo "          -a AUTHOR   Specify the author name"
+    echo "          -x EXPIRY   valid options are ( N - never, 10M - 10 minutes, 1H - 1 hour, 1D - 1 Day, 1M - 1 Month) "
+    echo "          -v          verbose, print more stuff"
+    echo "          -h          display this help"
     exit 1 ;
 fi
 
