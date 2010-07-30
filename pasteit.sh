@@ -35,29 +35,31 @@
 
 PROG_NAME=$(basename $0)
 
-if [[ ! -f "$1"  ]] ; then
+usage() {
     echo "Usage:    $PROG_NAME <path-to-file> [OPTIONS]";
-    echo "The program will return the URL to your post as the output.";
     echo
     echo "Options:"
     echo "          -f FORMAT   Specify the syntax highlighting format to be used"
     echo "          -a AUTHOR   Specify the author name"
-    echo "          -x EXPIRY   valid options are ( N - never, 10M - 10 minutes, 1H - 1 hour, 1D - 1 Day, 1M - 1 Month) "
-    echo "          -v          verbose, print more stuff"
-    echo "          -h          display this help"
-    exit 1 ;
-fi
+    echo "          -x EXPIRY   Valid options are ( N - never, 10M - 10 minutes, 1H - 1 hour, 1D - 1 Day, 1M - 1 Month) "
+    echo "          -v          Verbose, print more stuff"
+    echo "          -h          Display this help and exit"
+    echo
+    echo "The program will return the URL to your post as the output.";
+}
 
 file="$1"
 
-shift 1
+if [[ -f "$1" ]] ; then
+    shift 1
+fi
 
 test_format="pass"
 test_expiry="pass"
 verbose=""
 
 # can be written without getopts, using case command
-while getopts f:a:x:v op
+while getopts f:a:x:v:h op
 do
     case $op in
         f) format=$OPTARG
@@ -66,10 +68,27 @@ do
         x) expiry=$OPTARG
             test_expiry="";;
         v)verbose="true";;
-      \?) print -u2 "Usage: $0 <filename> [ -f format -a author -x expiry ]"
-           exit 2;;
+        h) usage
+            exit 0;
+            ;;
+        \?)echo
+            usage
+            exit 2;;
     esac
 done
+
+if [[ -z "$file"  ]] ; then
+    echo "ERROR: File to be pasted not specified"
+    echo
+    usage
+    exit 1 ;
+elif [[ ! -f "$file" ]]; then
+    echo "ERROR: File provided is invalid"
+    echo
+    usage
+    exit 1;
+fi
+
 
 if [[ ! -z "$verbose" ]]; then
     echo "Contents of file $file are accepted."
