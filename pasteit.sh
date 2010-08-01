@@ -59,7 +59,7 @@ test_expiry="pass"
 verbose=""
 
 # can be written without getopts, using case command
-while getopts f:a:x:v:h op
+while getopts f:a:x:vh op
 do
     case $op in
         f) format=$OPTARG
