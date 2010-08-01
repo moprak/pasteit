@@ -1,4 +1,4 @@
 After searching for a simple command-line tool for uploading files to pastebin.com and finding none to be satifying, we present pasteit:
-A shell script that allows you to directly upload files to pastebin.com using their public api available at http://pastebin.com/api.php. 
+A shell script that allows you to directly upload files to pastebin.com using their public api available at http://pastebin.com/api.php. We have tested the script to work with bash and zsh. 
 
 For comments, bug reports, suggestions and love mails contact prakash(daught)mohan(yat)kdemail(daught)net and ssivark007(yat)yahoo(daught)co(daught)in cat the rest to /dev/null.
