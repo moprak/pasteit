@@ -156,7 +156,7 @@ if [[ ! -z "$verbose" ]]; then
 fi
 
 curl http://pastebin.com/api_public.php -d \
-    paste_format=$format --data-urlencode paste_code@$file \
+    paste_format=$format --data-urlencode paste_code@"$file" \
     --data-urlencode paste_name=$author -d paste_expiry=$expiry; 
 echo
 
